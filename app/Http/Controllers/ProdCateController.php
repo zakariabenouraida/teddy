@@ -40,7 +40,7 @@ class ProdCateController extends Controller
             'productCategory' => 'required|max:255',
         ]);
         $prodcate = Prodcate::create($validatedData);
-        return redirect('/prod_cates')->with('success', 'Category successfully saved');
+        return redirect('admin/prod_cates')->with('success', 'Category successfully saved');
     }
 
     /**
@@ -82,7 +82,7 @@ class ProdCateController extends Controller
         ]);
         ProdCate::whereId($id)->update($validatedData);
 
-        return redirect('/prod_cates')->with('success', 'category is successfully updated');
+        return redirect('admin/prod_cates')->with('success', 'category is successfully updated');
     }
 
     /**
@@ -96,6 +96,6 @@ class ProdCateController extends Controller
         $prodcate = ProdCate::findOrFail($id);
         $prodcate->delete();
 
-        return redirect('/prod_cates')->with('success', 'category is successfully deleted');
+        return redirect('admin/prod_cates')->with('success', 'category is successfully deleted');
     }
 }

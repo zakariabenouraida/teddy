@@ -24,5 +24,19 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('prod_cates','ProdCateController');
-Route::resource('products','ProductController');
+
+Route::prefix('admin')->group(function () {
+    Route::resource('products','ProductController');
+
+    Route::resource('prod_cates','ProdCateController');
+
+    Route::get('/',function(){
+        return view('admin.index');
+    });
+});
+
+
+// Route::resource('prod_cates','ProdCateController');
+
+
+// Route::resource('products','ProductController');

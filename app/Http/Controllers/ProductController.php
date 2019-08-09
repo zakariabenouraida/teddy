@@ -49,7 +49,7 @@ class ProductController extends Controller
         ]);
         $product = Product::create($validatedData);
    
-        return redirect('/products')->with('success', 'product is successfully saved');
+        return redirect('admin/products')->with('success', 'product is successfully saved');
     }
 
     /**
@@ -95,7 +95,7 @@ class ProductController extends Controller
         ]);
         Product::whereId($id)->update($validatedData);
    
-        return redirect('/products')->with('success', 'product is successfully update');
+        return redirect('admin/products')->with('success', 'product is successfully update');
     }
 
     /**
@@ -109,6 +109,6 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return redirect('/products')->with('success', 'product is successfully deleted');
+        return redirect('admin/products')->with('success', 'product is successfully deleted');
     }
 }

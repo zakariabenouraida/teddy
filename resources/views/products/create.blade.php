@@ -6,7 +6,8 @@
   }
 </style>
     <button  type="button" class="btn btn-primary btn-lg uper"><a href="/" style="text-decoration:none;color:white;">Home</a></button>
-    <button  class="btn btn-primary uper" ><a href="/products" style="text-decoration:none;color:white;">See all Products</a></button>
+    <button  type="button" class="btn btn-primary btn-lg uper"><a href="/admin/" style="text-decoration:none;color:white;">Admin Dashboard</a></button>
+    <button  class="btn btn-primary btn-lg uper" ><a href="/admin/products" style="text-decoration:none;color:white;">See all Products</a></button>
 <div class="card uper">
   <div class="card-header">
     Add Book
@@ -35,7 +36,7 @@
               <label for="productprice">productPrice:</label>
               <input type="integer" class="form-control" name="productPrice"/>
           </div>
-          <div class="productCategory_id">
+          <div class="form-group">
               <label for="productCategory_id">productCategory:</label>
               <select type="text" class="form-control" name="productCategory_id">
               @foreach($prodcates as $prodcate)

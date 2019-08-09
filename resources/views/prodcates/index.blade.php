@@ -7,7 +7,8 @@
   }
 </style>
     <button  type="button" class="btn btn-primary btn-lg uper"><a href="/" style="text-decoration:none;color:white;">Home</a></button>
-    <button  type="button" class="btn btn-primary btn-lg uper"><a href="/prod_cates/create" style="text-decoration:none;color:white;">ADD category</a></button>
+    <button  type="button" class="btn btn-primary btn-lg uper"><a href="/admin/" style="text-decoration:none;color:white;">Admin Dashboard</a></button>
+    <button  type="button" class="btn btn-primary btn-lg uper"><a href="/admin/prod_cates/create" style="text-decoration:none;color:white;">ADD category</a></button>
 <div class="uper">
   @if(session()->get('success'))
     <div class="alert alert-success">

@@ -61,8 +61,6 @@ body {
                 <a class="navbar-brand" href="{{ url('/') }}" style="font-family: 'Fascinate', cursive;">
                     {{ config('app.name', 'ShopSmart') }}
                 </a>
-                <button  type="button" class="btn btn-primary btn-lg"><a href="/products/create" style="text-decoration:none;color:white;">ADD PRODUCT</a></button>
-                <button  type="button" class="btn btn-primary btn-lg"><a href="/prod_cates/create" style="text-decoration:none;color:white;">ADD category</a></button>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

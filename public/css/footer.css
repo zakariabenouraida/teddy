@@ -1,0 +1,28 @@
+footer{
+    border-top:1px solid black;
+    background-color:   rgb(241, 237, 231) ;
+}
+
+footer ul{
+    list-style: none;
+    line-height: 30px;
+    padding-inline-start: 0;
+}
+ul#social li {
+    display:inline;
+  }
+footer h5 {
+    text-decoration: underline overline;
+}
+#brandpos a{
+    margin-top:75px;
+    color: black;
+    font-family: 'Fascinate', cursive;
+}
+hr{
+    color: black;
+}
+.copyright {
+    text-align: center;
+    padding-bottom: 10px;
+}

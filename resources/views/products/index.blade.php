@@ -6,6 +6,8 @@
     margin-top: 40px;
   }
 </style>
+    <button  type="button" class="btn btn-primary btn-lg uper"><a href="/" style="text-decoration:none;color:white;">Home</a></button>
+    <button  type="button" class="btn btn-primary btn-lg uper"><a href="/products/create" style="text-decoration:none;color:white;">ADD PRODUCT</a></button>
 <div class="uper">
   @if(session()->get('success'))
     <div class="alert alert-success">

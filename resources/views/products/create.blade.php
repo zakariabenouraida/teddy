@@ -1,11 +1,12 @@
 @extends('products.layout')
-
 @section('content')
 <style>
   .uper {
     margin-top: 40px;
   }
 </style>
+    <button  type="button" class="btn btn-primary btn-lg uper"><a href="/" style="text-decoration:none;color:white;">Home</a></button>
+    <button  class="btn btn-primary uper" ><a href="/products" style="text-decoration:none;color:white;">See all Products</a></button>
 <div class="card uper">
   <div class="card-header">
     Add Book

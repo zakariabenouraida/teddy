@@ -60,10 +60,9 @@ body {
 
                 <a class="navbar-brand" href="{{ url('/') }}" style="font-family: 'Fascinate', cursive;">
                     {{ config('app.name', 'ShopSmart') }}
+                </a>
                 <button  type="button" class="btn btn-primary btn-lg"><a href="/products/create" style="text-decoration:none;color:white;">ADD PRODUCT</a></button>
                 <button  type="button" class="btn btn-primary btn-lg"><a href="/prod_cates/create" style="text-decoration:none;color:white;">ADD category</a></button>
-
-                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -167,7 +166,7 @@ body {
         </div>
         <hr>
         <div class="footer-copyright  small-12 medium-12 large-12 xlarge-12 xxlarge-12 xxxlarge-12">
-          <div class="copyright" >&copy; 2019 <a href="/" title=""style="color:black;">{{ config('app.name', 'ShopSmart') }}</a></div> 
+          <div class="copyright" >&copy; 2019 <a href="/" title=" " style="color:black;">{{ config('app.name', 'ShopSmart') }}</a></div> 
         </div>
     </footer>
 </div>

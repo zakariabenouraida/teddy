@@ -18,22 +18,25 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
     return view('welcome');
-})->name('home');
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/showall', 'SiteController@index');
 
-
-Route::prefix('admin')->group(function () {
-    Route::resource('products','ProductController');
-
-    Route::resource('prod_cates','ProdCateController');
-
-    Route::get('/',function(){
-        return view('admin.index');
+Route::group(['middleware' => ['admin']],function(){
+    Route::prefix('admin')->group(function () {
+        Route::resource('products','ProductController');
+    
+        Route::resource('prod_cates','ProdCateController');
+    
+        Route::get('/',function(){
+            return view('admin.index');
+        });
     });
 });
+
 
 
 // Route::resource('prod_cates','ProdCateController');

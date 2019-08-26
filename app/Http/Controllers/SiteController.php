@@ -49,7 +49,9 @@ class SiteController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+        // $prodcate = ProdCate::findOrFail($id);
+        return view('site.show', compact('product'));
     }
 
     /**

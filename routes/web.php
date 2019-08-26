@@ -23,7 +23,10 @@ Route::get('/home', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/showall', 'SiteController@index');
+// Route::get('/showall', 'SiteController@index');
+// Route::get('/show/{prod}', 'SiteController@show');
+Route::resource('site','SiteController');
+
 
 Route::group(['middleware' => ['admin']],function(){
     Route::prefix('admin')->group(function () {

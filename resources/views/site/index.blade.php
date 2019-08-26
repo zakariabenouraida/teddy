@@ -5,9 +5,10 @@
 @foreach($products as $product)
             <div class="col-4 pb-4">
               
-            {{$product->productImage}}<br>
+            <img src="{{$product->productImage}}"><br>
             {{$product->productName}}<br>
-            {{$product->productPrice}}
+            {{$product->productPrice}}<br>
+            <a href="/site/{{ $product->id }}">see product</a>
 
               
             </div>

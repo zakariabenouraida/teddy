@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\ProdCate;
 use App\Product;
+use Intervention\Image\Facades\Image;
 
 class ProductController extends Controller
 {
@@ -47,7 +48,17 @@ class ProductController extends Controller
             'productPrice'=>'required',
             'productImage'=>'required|image',
         ]);
-        $product = Product::create($validatedData);
+        $imagePath=request('productImage')->store('uploads', 'public');  
+
+        $productImage = Image::make(public_path("storage/{$imagePath}"));
+        $productImage->save();
+        $product = Product::create([
+            'productName'=>$validatedData['productName'],
+            'productCategory_id'=>$validatedData['productCategory_id'],
+            'productDetails'=>$validatedData['productDetails'],
+            'productPrice'=>$validatedData['productPrice'],
+            'productImage'=>$imagePath,
+        ]);
    
         return redirect('admin/products')->with('success', 'product is successfully saved');
     }
@@ -93,8 +104,18 @@ class ProductController extends Controller
             'productPrice'=>'required',
             'productImage'=>'required|image',
         ]);
-        Product::whereId($id)->update($validatedData);
-   
+
+        $imagePath=request('productImage')->store('uploads', 'public');  
+
+        $productImage = Image::make(public_path("storage/{$imagePath}"));
+        $productImage->save();
+        Product::whereId($id)->update([
+            'productName'=>$validatedData['productName'],
+            'productCategory_id'=>$validatedData['productCategory_id'],
+            'productDetails'=>$validatedData['productDetails'],
+            'productPrice'=>$validatedData['productPrice'],
+            'productImage'=>$imagePath,
+        ]);
         return redirect('admin/products')->with('success', 'product is successfully update');
     }
 

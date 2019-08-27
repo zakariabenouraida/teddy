@@ -1,4 +1,4 @@
-@extends('site.layout')
+@extends('layouts.app')
 
 @section('content')
     <div class="container-fluid">
@@ -29,7 +29,7 @@
                 <input type="number" min="1" max="10" value="1" name="productQuantity">
           </div>    
           <p>{!!$product->productDetails!!}</p><BR>
-          <button type="submit" class="btn btn-primary">BUY NOW</button>
+          <button type="submit" class="btn btn-primary">ADD to cart</button>
 </form>
         </div>
 	</div>

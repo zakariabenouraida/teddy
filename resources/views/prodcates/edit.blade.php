@@ -1,4 +1,4 @@
-@extends('prodcates.layout')
+@extends('layouts.app')
 
 @section('content')
 <style>
@@ -28,7 +28,7 @@
               <input type="text" class="form-control" name="productCategory"/>
           </div>
 
-          <button type="submit" class="btn btn-primary">Update Book</button>
+          <button type="submit" class="btn btn-primary">Update Category</button>
       </form>
   </div>
 </div>

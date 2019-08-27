@@ -102,6 +102,7 @@ body {
                                 </div>
                             </li>
                         @endguest
+                        <a href="#" class="btn btn-xs"style="background-color:#F1EDE7;text-decoration:none;color:black;"><i class="fas fa-shopping-cart"></i>  0</a>  
                     </ul>
                 </div>
             </div>

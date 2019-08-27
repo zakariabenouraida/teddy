@@ -1,4 +1,4 @@
-@extends('products.layout')
+@extends('layouts.app')
 
 @section('content')
 <style>
@@ -25,15 +25,15 @@
       @method('PATCH')
           <div class="form-group">
               <label for="productName">productName:</label>
-              <input type="text" class="form-control" name="productName"/>
+              <input type="text" class="form-control" name="productName" value="{{$product->productName}}">
           </div>
           <div class="form-group">
               <label for="productImage">product image:</label>
-              <input type="file" name="productImage"/>
+              <input type="file" name="productImage" value="{{$product->productImage}}">
           </div>
           <div class="form-group">
               <label for="productprice">productPrice:</label>
-              <input type="integer" class="form-control" name="productPrice"/>
+              <input type="integer" class="form-control" name="productPrice" value="{{$product->productPrice}}">
           </div>
           <div class="productCategory_id">
               <label for="productCategory_id">productCategory:</label>
@@ -45,7 +45,7 @@
           </div>
           <div class="form-group">
               <label for="productDetails">productDetails:</label>
-              <textarea type="text" class="form-control" name="productDetails"></textarea>
+              <textarea type="text" class="form-control" name="productDetails" >{{$product->productDetails}}</textarea>
           </div>
 
 

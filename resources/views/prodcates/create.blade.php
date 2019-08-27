@@ -1,4 +1,4 @@
-@extends('prodcates.layout')
+@extends('layouts.app')
 
 @section('content')
 <style>

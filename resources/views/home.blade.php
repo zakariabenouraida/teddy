@@ -15,7 +15,7 @@
       <img src="\images\slider\banner_ba_sweaters_2048x.png" class="d-block w-100" alt="">
       <div class="carousel-caption d-none d-md-block">
       <h5>VIEW ALL</h5>
-      <a href="/site"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
+      <a href="/showproduct"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
     <div class="carousel-item">

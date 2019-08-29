@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\ProdCate;
 use App\Product;
 use App\Size;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class SiteController extends Controller
+class ShowProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +19,7 @@ class SiteController extends Controller
     {
         $products = Product::all();
         $prodcates = ProdCate::all();
-        return view('site.index', compact('products'), compact('prodcates'));
+        return view('showproduct.index', compact('products'), compact('prodcates'));
     }
 
     /**
@@ -48,13 +49,19 @@ class SiteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id,$productCategory_id)
     {
         $product = Product::findOrFail($id);
         $sizes = Size::all();
-
+        $suggestions = DB::table('products')->select('*')->where('productCategory_id',$productCategory_id)->get();
+        
+// dd($suggestions);
         // $prodcate = ProdCate::findOrFail($id);
-        return view('site.show', compact('product'),compact('sizes'));
+        return view('showproduct.show')->with([
+                                        'product'       => $product,
+                                        'sizes'         => $sizes,
+                                        'suggestions'   => $suggestions
+                                    ]);
     }
 
     /**

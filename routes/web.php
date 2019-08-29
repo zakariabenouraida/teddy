@@ -11,6 +11,8 @@
 |
 */
 
+use App\Http\Controllers\ProductController;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -25,7 +27,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/showall', 'SiteController@index');
 // Route::get('/show/{prod}', 'SiteController@show');
-Route::resource('site','SiteController');
+Route::resource('showproduct','ShowProductController');
+Route::get('/showproduct/{id}/{productCategory_id}', 'ShowProductController@show');
+
 
 
 Route::group(['middleware' => ['admin']],function(){
@@ -41,7 +45,14 @@ Route::group(['middleware' => ['admin']],function(){
     });
 });
 
+Route::get('cart','CartController@cart');
 
+Route::post('add-to-cart/{id}','CartController@addToCart');
+
+
+Route::patch('update-cart', 'CartController@update');
+ 
+Route::delete('remove-from-cart', 'CartController@remove');
 
 // Route::resource('prod_cates','ProdCateController');
 

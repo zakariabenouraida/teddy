@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'TeddyFresh') }}</title>
 
     <!-- Scripts -->
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/b3bd1b8484.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -52,6 +53,7 @@ body {
 </style>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+    @yield('checkout')
 </head>
 <div id="containera">
 

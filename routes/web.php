@@ -11,6 +11,7 @@
 |
 */
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
@@ -30,7 +31,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('showproduct','ShowProductController');
 Route::get('/showproduct/{id}/{productCategory_id}', 'ShowProductController@show');
 
-
+Route::resource('checkout','CheckoutController');
 
 Route::group(['middleware' => ['admin']],function(){
     Route::prefix('admin')->group(function () {

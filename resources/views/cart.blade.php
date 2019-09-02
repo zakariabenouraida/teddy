@@ -68,7 +68,7 @@
     </table>
     <div class="container">
   <div class="row justify-content-md-center ">
-    <button class="btn-block btn m-3 btn-outline-dark col-md-auto btn-lg">Checkout</button>
+    <a href="{{ url('/checkout')}}" class="btn-block btn m-3 btn-outline-dark col-md-auto btn-lg">Checkout</a>
 </div>
 </div>
 </div>

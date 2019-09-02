@@ -105,12 +105,16 @@ body {
                                 </div>
                             </li>
                         @endguest
+                        <li class="nav-item">
+                            <a href="/cart">
+                                <button type="button" class="btn btn-xs"style="background-color:#F1EDE7;text-decoration:none;color:black;">
+                                    <i class="fa fa-shopping-cart"></i> Cart <span class="badge badge-pill badge-dark">{{ count((array)session('cart')) }}</span>
+                                </button>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- <a href="#" class="btn btn-xs"style="background-color:#F1EDE7;text-decoration:none;color:black;"><i class="fas fa-shopping-cart"></i>  0</a>   -->
-                <a href="/cart"><button type="button" class="btn btn-xs"style="background-color:#F1EDE7;text-decoration:none;color:black;">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart <span class="badge badge-pill badge-dark">{{ count((array)session('cart')) }}</span>
-        </button></a>
             </div>
         </nav>
 </div>

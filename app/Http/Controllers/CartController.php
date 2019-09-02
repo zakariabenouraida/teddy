@@ -82,10 +82,10 @@ class CartController extends Controller
             abort(404);
         }    
         $cart = session()->get('cart');
-
+        // dd(gettype($request->productQuantity));
         if(!$cart) {
             $cart = [ 
-                $id => [
+                $id .'|'. $request->productSize => [
                     "name" => $product->productName,
                     "price" => $product->productPrice,
                     "size" => $request->productSize,
@@ -97,35 +97,18 @@ class CartController extends Controller
                 return redirect()->back()->with('success','Product added to cart successfully!');
         }
 
-        if(isset($cart[$id])&&($cart[$id]['size']==$request->productSize)) {
-            $cart[$id]['quantity'] += $request->productQuantity;
+        if(isset($cart[$id .'|'. $request->productSize])) {
+            $cart[$id .'|'. $request->productSize]['quantity'] += $request->productQuantity;
 
             session()->put('cart', $cart);
  
             return redirect()->back()->with('success', 'Product added to cart successfully!');
         }
         // dd($cart);
-        // dd(isset($cart[$id])&&($cart[$id]['size']!==$request->productSize));
+        // dd(isset($cart[$id .'|'. $request->productSize])&&($cart[$id .'|'. $request->productSize]['size']!==$request->productSize));
 
-        if(isset($cart[$id])&&($cart[$id]['size']!==$request->productSize)) {
-            // $cart=
-            $newcart = session()->get('newcart');
-            $newcart[$id]  = [ 
-                
-                    "name" => $product->productName,
-                    "price" => $product->productPrice,
-                    "size" => $request->productSize,
-                    "quantity" => $request->productQuantity,
-                    "photo" => $product->productImage
-               
-                ];
 
-            session()->put('newcart', $newcart);
- 
-            return redirect()->back()->with('success', 'Product added to cart successfully!');
-        ;}
-
-        $cart[$id] = [
+        $cart[$id .'|'. $request->productSize] = [
                     "name" => $product->productName,
                     "price" => $product->productPrice,
                     "size" => $request->productSize,
@@ -141,14 +124,14 @@ class CartController extends Controller
 
     public function update(Request $request)
     {
+        // dd($request->id);
         if($request->id and $request->quantity)
         {
             $cart = session()->get('cart');
- 
             $cart[$request->id]["quantity"] = $request->quantity;
- 
+            
             session()->put('cart', $cart);
- 
+            
             session()->flash('success', 'Cart updated successfully');
         }
         
@@ -157,12 +140,13 @@ class CartController extends Controller
     public function remove(Request $request)
     {
         if($request->id) {
- 
+            
             $cart = session()->get('cart');
+            // dd($cart[$request->id .'|'. $request->productSize]);
  
             if(isset($cart[$request->id])) {
  
-                unset($cart[$request->id]);
+                unset($cart[$request->id ]);
  
                 session()->put('cart', $cart);
             }

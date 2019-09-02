@@ -10,7 +10,7 @@
     <button  class="btn btn-primary btn-lg uper" ><a href="/admin/products" style="text-decoration:none;color:white;">See all Products</a></button>
 <div class="card uper">
   <div class="card-header">
-    Add Book
+    Add product
   </div>
   <div class="card-body">
     @if ($errors->any())

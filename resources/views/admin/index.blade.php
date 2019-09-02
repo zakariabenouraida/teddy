@@ -21,7 +21,7 @@
                 </div>
                 <div class="row justify-content-center">
                   <button  type="button" class="btn btn-primary  btn-lg uper col-lg-5"><a href="/admin/sizes/create" style="text-decoration:none;color:white;">ADD SIZE</a></button>
-                <button  type="button" class="btn btn-primary btn-lg uper col-lg-5" ><a href="/admin/sizes" style="text-decoration:none;color:white;">See all sizes</a></button>
+                <button  type="button" class="btn btn-primary btn-lg uper col-lg-5" ><a href="/admin/sizes" style="text-decoration:none;color:white;">See all Sizes</a></button>
                 </div>
               </div>
 

@@ -11,7 +11,7 @@
     <button  class="btn btn-primary btn-lg uper" ><a href="/admin/prod_cates" style="text-decoration:none;color:white;">See all Categories</a></button>
 <div class="card uper">
   <div class="card-header">
-    Add Book
+    Add Category
   </div>
   <div class="card-body">
     @if ($errors->any())

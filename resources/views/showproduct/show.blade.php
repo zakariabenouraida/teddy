@@ -25,6 +25,7 @@
               <label for="productQuantity">QUANTITY:</label>
                 <input type="number" min="1" max="10" value="1" name="productQuantity">
           </div>    
+          <p>Details:</p>
           <p>{!!$product->productDetails!!}</p><BR>
           <a href="{{ url('add-to-cart/'.$product->id) }}"><button type="submit" class="btn btn-primary">ADD to cart</button></a>
 </form>

@@ -24,6 +24,27 @@
 
     <!-- Styles -->
     <style>
+        .StripeElement {
+  background-color: white;
+  padding: 16px 16px;
+  border: 1px solid #ccc;
+
+}
+
+.StripeElement--focus {
+  /* box-shadow: 0 1px 3px 0 #cfd7df; */
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+#card-errors{
+    color: #fa755a;
+}
     html,
 body {
    margin:0;
@@ -183,6 +204,7 @@ body {
     </footer>
 </div>
 @yield('scripts')
+@yield('checkout-js')
 </body>
 
 

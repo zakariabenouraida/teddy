@@ -36,7 +36,7 @@ Route::resource('checkout','CheckoutController');
 Route::group(['middleware' => ['admin']],function(){
     Route::prefix('admin')->group(function () {
         Route::resource('products','ProductController');
-    
+
         Route::resource('prod_cates','ProdCateController');
         Route::resource('sizes', 'SizeController');
 

@@ -41,4 +41,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Role');
     }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Order'); 
+    }
+
+    public function shippingdetail()
+    {
+        return $this->hasOne(shippingDetail::class);    
+    }
 }

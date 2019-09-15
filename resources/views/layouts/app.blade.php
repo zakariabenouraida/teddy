@@ -23,7 +23,48 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    
     <style>
+        .topnav {
+  background-color: #F1EDE7;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+@media only screen and (max-width: 600px) {
+    .topnav {
+        text-align: center;
+        width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  }
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    /* margin-left:150px; */
+  float: left;
+  color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
     html,
 body {
    margin:0;
@@ -135,19 +176,19 @@ body {
             </div>
             <div class="col-2">
                 <h5>MENU</h5>
-                <ul>
-                    <li>HOODIES</li>
-                    <li>SWEATERS</li>
-                    <li>T-SHIRTS</li>
-                    <li>PANTS</li>
-                    <li>ACCESSORIES</li>
+                <ul >
+                <li ><a style="text-decoration:none;color:black;" href="/showcategory/1">Hoodies</a></li>
+                <li ><a style="text-decoration:none;color:black;" href="/showcategory/2">Sweaters</a></li>
+                <li ><a style="text-decoration:none;color:black;" href="/showcategory/3">SHIRTS</a></li>
+                <li ><a style="text-decoration:none;color:black;" href="/showcategory/4">Pants</a></li>
+                <li ><a style="text-decoration:none;color:black;" href="/showcategory/5">Accessories</a></li>
                 </ul>
             </div>
             <div class="col-2"> 
                 <h5>YOUR ACCOUNT</h5>  
                 <ul>
-                    <li>SETTINGS</li>
-                    <li>BILLING</li>
+                    <li><a style="text-decoration:none;color:black;" href="{{ route('shippingdetails.create')}}">Shipping Details</a></li>
+                    <!-- <li>BILLING</li> -->
                 </ul>
             </div> 
             <div class="col-2"> 
@@ -183,6 +224,8 @@ body {
     </footer>
 </div>
 @yield('scripts')
+<script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 
 

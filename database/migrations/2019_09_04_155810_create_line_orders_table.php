@@ -17,14 +17,15 @@ class CreateLineOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('product_id');
-            $table->unsignedBigInteger('size_id');
-            $table->integer('quantity');
+            $table->unsignedBigInteger('productSize_id');
+            $table->integer('productQuantity');
+            
             $table->timestamps();
-        });
-        Schema::table('line_orders',function ($table){
+
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('size_id')->references('id')->on('sizes');
+            $table->foreign('productSize_id')->references('id')->on('sizes');
+            
         });
     }
 
@@ -35,9 +36,10 @@ class CreateLineOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropForeign(['order_id']);
-        Schema::dropForeign(['product_id']);
-        Schema::dropForeign(['size_id']);
+        Schema::dropForeign('order_id');
+        Schema::dropForeign('product_id');
+        Schema::dropForeign('productSize_id');
+        
         Schema::dropIfExists('line_orders');
     }
 }

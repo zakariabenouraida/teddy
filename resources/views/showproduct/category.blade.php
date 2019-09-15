@@ -7,6 +7,7 @@
   <a href="/showcategory/5">Accessories</a>
 </div>
 @section('content')
+
 <div class="row m-5">
 @foreach($products as $product)
             <div class="col-3 pb-4"style="text-align:center;">

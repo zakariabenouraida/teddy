@@ -54,14 +54,14 @@
       <img src="\images\type\bluehoodie.png" class="img-fluid">
       <div class="carousel-caption d-none d-md-block">
       <h5>VIEW HOODIES</h5>
-      <button type="button" class="btn btn-light">SHOP NOW</button>
+      <a href="/showproduct"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
     <div class="col-6">
       <img src="\images\type\since_one_year_ago_fleece_crew_white_03_2000x.jpg" class="img-fluid"style="height:399px;">
       <div class="carousel-caption d-none d-md-block">
       <h5>VIEW SWEATERS</h5>
-      <button type="button" class="btn btn-light">SHOP NOW</button>
+      <a href="/showproduct"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
   </div>
@@ -70,21 +70,21 @@
       <img src="\images\type\43_2000x.jpg" class="img-fluid">
       <div class="carousel-caption d-none d-md-block">
       <h5>VIEW T-SHIRTS</h5>
-      <button type="button" class="btn btn-light">SHOP NOW</button>
+      <a href="/showproduct"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
     <div class="col-4">
       <img src="\images\type\05retouchedpants_2000x.jpg" class="img-fluid">
       <div class="carousel-caption d-none d-md-block">
       <h5>VIEW PANTS</h5>
-      <button type="button" class="btn btn-light">SHOP NOW</button>
+      <a href="/showproduct"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
     <div class="col-4">
       <img src="\images\type\teddy-fresh-tracksuits-bags-ben-awin-30.png" class="img-fluid">
       <div class="carousel-caption d-none d-md-block">
       <h5>VIEW ACCESSORIES</h5>
-      <button type="button" class="btn btn-light">SHOP NOW</button>
+      <a href="/showproduct"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
   </div>

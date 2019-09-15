@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\shippingDetail;
+use Illuminate\Support\Facades\Auth;
 
-class LineOrderController extends Controller
+class ShippingDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class LineOrderController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -23,7 +25,7 @@ class LineOrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('shippingdetails.create');
     }
 
     /**
@@ -34,7 +36,18 @@ class LineOrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'user_id' => 'required',
+             'shippingAddress' => 'required|max:255',
+             'shippingCountry' => 'required',
+             'shippingCity' => 'required',
+             'shippingZip' => 'required',
+             'Phone' => 'required',
+         ]);
+        //  dd($validatedData);
+         $shippingdetails = shippingDetail::create($validatedData);
+    
+         return redirect('orders/create')->with('success', 'Book is successfully saved');
     }
 
     /**

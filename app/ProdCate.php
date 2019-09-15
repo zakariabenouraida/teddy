@@ -9,7 +9,8 @@ class ProdCate extends Model
     protected $fillable = ['productCategory'];
 
 
-    public function product(){
+    public function product()
+    {
         return $this->belongsTo(Product::class);
     }
 }

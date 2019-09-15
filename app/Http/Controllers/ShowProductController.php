@@ -63,7 +63,12 @@ class ShowProductController extends Controller
                                         'suggestions'   => $suggestions
                                     ]);
     }
-
+public function showcategory($id)
+{
+    $category = ProdCate::findOrFail($id);
+    $product = Product::table('products')->select('*')->where('productCategory_id',$category)->get();
+    return view('showproduct.category', compact('category'), compact('product'));
+}
     /**
      * Show the form for editing the specified resource.
      *

@@ -11,8 +11,8 @@
 |
 */
 
-use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,14 +29,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/showall', 'SiteController@index');
 // Route::get('/show/{prod}', 'SiteController@show');
 Route::resource('showproduct','ShowProductController');
+
 Route::get('/showproduct/{id}/{productCategory_id}', 'ShowProductController@show');
+Route::get('/showcategory/{productCategory_id}', 'SiteController@index');
 
-Route::resource('checkout','CheckoutController');
+Route::resource('userdetails','RegisterController');
 
+// Route::get('/showproduct/{productCategory_id}', 'ShowProductController@showcategory');
+// Route::resource('checkout','OrderController@thanks');
+// Route::resource('orders','OrderController');
+// Route::get('/orders/create', 'OrderController@create');
+// route::post('/orders/store', 'OrderController@store');
+Route::group(['middleware' => ['auth']],function(){
+    Route::resource('orders','OrderController');
+    Route::resource('shippingdetails','shippingDetailController');
+});
 Route::group(['middleware' => ['admin']],function(){
     Route::prefix('admin')->group(function () {
-        Route::resource('products','ProductController');
-    
+        Route::resource('products','ProductController');   
         Route::resource('prod_cates','ProdCateController');
         Route::resource('sizes', 'SizeController');
 

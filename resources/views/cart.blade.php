@@ -4,11 +4,11 @@
  
 @section('content')
 <div class="container-fluid">
-<div class="row justify-content-md-center">
-<div class="col-md-2">
+<!-- <div class="row justify-content-md-center">
+<div class="col-md-2"> -->
   
 </div>
-<div class="col-md-8">
+<div class="col-md-10 offset-1">
     <table id="cart" class="table table-hover table-condensed">
         <thead>
         <tr>
@@ -28,7 +28,7 @@
         @if(session('cart'))
             @foreach(session('cart') as $id => $details)
                 <?php $total += $details['price'] * $details['quantity'] ?>
- 
+
                 <tr>
                     <td data-th="Product">
                         <div class="row">
@@ -67,13 +67,16 @@
         </tfoot>
     </table>
     <div class="container">
-  <div class="row justify-content-md-center ">
-    <a href="{{ url('/checkout')}}" class="btn-block btn m-3 btn-outline-dark col-md-auto btn-lg">Checkout</a>
-</div>
-</div>
-</div>
-<div class="col-md-2">
+        <div class="row justify-content-md-center ">
+            <a href="{{ route('shippingdetails.create')}}" class="btn-block btn m-3 btn-outline-dark col-md-auto btn-lg">Add shipping details</a>
         </div>
+  <div class="row justify-content-md-center ">
+    <a href="{{ route('orders.create')}}" class="btn-block btn m-3 btn-outline-dark col-md-auto btn-lg">Checkout</a>
+</div>
+</div>
+</div>
+<!-- <div class="col-md-2">
+        </div> -->
 </div>
 </div>
 @endsection

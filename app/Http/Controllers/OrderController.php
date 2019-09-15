@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\LineOrder;
+use App\NewOrder;
+use App\Order;
 use Illuminate\Http\Request;
+use App\shippingDetail;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
@@ -13,7 +20,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        // $neworders = NewOrder::all();
+        // return view('showproduct');
     }
 
     /**
@@ -23,7 +31,13 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $userId = Auth::id();
+        // dd($userId);
+        $shippingdetails = shippingDetail::where('user_id',$userId)->get();
+        
+        // $s =  $shippingdetails ->shippingAddress;
+        //  dd($shippingdetails);
+        return view('orders.create',compact('shippingdetails'));
     }
 
     /**
@@ -34,7 +48,53 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        if($request->session()->has('cart')){
+
+            $validatedData = $request->validate([
+                'user_id' => 'required',
+            ]);
+            // dd($validatedData);
+            $order = new Order($validatedData);
+            $order->save();
+        }
+// dd($order);
+
+
+$producttable=[];
+// $validatedOrder = new NewOrder;
+foreach (Session::get('cart') as $details)
+{
+    $neworder= new NewOrder([
+        'order_id'=>$order->id,
+        'product_id'=>$details['product_id'],
+        'productSize'=>$details['size'],
+        'productQuantity'=>$details['quantity'],
+        
+    ]);
+    array_push($producttable,$details);
+
+    $neworder->save($producttable);
+    // dd($neworder);
+}
+Session::forget('cart');
+return view('orders.thanks')->with('success', 'Order successfully saved');
+
+// $validatedOrder ->order_id = $order->id;
+// $validatedOrder ->product_id = $details['product_id'];
+// $validatedOrder ->productSize = $details['size'];
+// $validatedOrder ->productQuantity = $details['quantity'];
+
+// array_push($producttable,$details);
+        // dd(count($producttable));
+        // for($i=0;$i <= count($producttable);$i++){
+            
+            
+            // }
+            // dd($producttable);
+        // dd($validatedOrder);
+
+        
     }
 
     /**

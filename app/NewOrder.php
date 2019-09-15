@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class LineOrder extends Model
+class NewOrder extends Model
 {
-    protected $fillable = ['order_id', 'product_id', 'productSize_id', 'productQuantity'];
+    protected $fillable = ['order_id', 'product_id', 'productSize', 'productQuantity'];
 
 
     public function order()
@@ -16,9 +16,5 @@ class LineOrder extends Model
     public function products()
     {
         return $this->hasMany(Product::class);    
-    }
-    public function Sizes()
-    {
-        return $this->hasMany(Size::class);    
-    }
+    } 
 }

@@ -6,6 +6,7 @@ use App\ProdCate;
 use App\Product;
 use App\Size;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SiteController extends Controller
 {
@@ -14,11 +15,15 @@ class SiteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($productCategory_id)
     {
-        $products = Product::all();
-        $prodcates = ProdCate::all();
-        return view('site.index', compact('products'), compact('prodcates'));
+
+            $products = DB::table('products')->select('*')->where('productCategory_id',$productCategory_id)->get();
+            
+    // dd($suggestions);
+            // $prodcate = ProdCate::findOrFail($id);
+            return view('showproduct.category',compact('products'));
+        
     }
 
     /**

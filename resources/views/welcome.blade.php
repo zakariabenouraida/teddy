@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+<!-- <button  type="button" class="btn btn-primary btn-lg uper"><a href="/admin/" style="text-decoration:none;color:white;">Admin Dashboard</a></button> -->
+
 <div id="body">
 <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -22,28 +24,28 @@
       <img src="\images\slider\banner_ba_t_shirts_2048x.jpg" class="d-block w-100" alt="">
       <div class="carousel-caption d-none d-md-block">
       <h5>VIEW ALL</h5>
-      <button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button>
+      <a href="/showproduct"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
     <div class="carousel-item">
       <img src="\images\slider\banner_winter_6_a55a9679-0ee9-4469-af77-15e61f675b22_2048x.jpg" class="d-block w-100" alt="">
       <div class="carousel-caption d-none d-md-block">
       <h5>VIEW ALL</h5>
-      <button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button>
+      <a href="/showproduct"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
     <div class="carousel-item">
       <img src="\images\slider\banner_winter_9_2d1d9bca-dcb1-4794-bdaa-c8858ca31977_2048x.jpg" class="d-block w-100" alt="">
       <div class="carousel-caption d-none d-md-block">
       <h5>VIEW ALL</h5>
-      <button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button>
+      <a href="/showproduct"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
     <div class="carousel-item">
       <img src="\images\slider\banner_winter_9_2048x.jpg" class="d-block w-100" alt="">
       <div class="carousel-caption d-none d-md-block">
       <h5>VIEW ALL</h5>
-      <button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button>
+      <a href="/showproduct"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
   </div>
@@ -53,15 +55,15 @@
     <div class="col-6">
       <img src="\images\type\bluehoodie.png" class="img-fluid">
       <div class="carousel-caption d-none d-md-block">
-      <h5>VIEW HOODIES</h5>
-      <button type="button" class="btn btn-light">SHOP NOW</button>
+      <h5>HOODIES</h5>
+      <a href="/showcategory/1"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
     <div class="col-6">
       <img src="\images\type\since_one_year_ago_fleece_crew_white_03_2000x.jpg" class="img-fluid"style="height:399px;">
       <div class="carousel-caption d-none d-md-block">
-      <h5>VIEW SWEATERS</h5>
-      <button type="button" class="btn btn-light">SHOP NOW</button>
+      <h5>SWEATERS</h5>
+      <a href="/showproduct/2"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
   </div>
@@ -69,22 +71,22 @@
     <div class="col-4">
       <img src="\images\type\43_2000x.jpg" class="img-fluid">
       <div class="carousel-caption d-none d-md-block">
-      <h5>VIEW T-SHIRTS</h5>
-      <button type="button" class="btn btn-light">SHOP NOW</button>
+      <h5>T-SHIRTS</h5>
+      <a href="/showproduct/3"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
     <div class="col-4">
       <img src="\images\type\05retouchedpants_2000x.jpg" class="img-fluid">
       <div class="carousel-caption d-none d-md-block">
-      <h5>VIEW PANTS</h5>
-      <button type="button" class="btn btn-light">SHOP NOW</button>
+      <h5>PANTS</h5>
+      <a href="/showproduct/4"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
     <div class="col-4">
       <img src="\images\type\teddy-fresh-tracksuits-bags-ben-awin-30.png" class="img-fluid">
       <div class="carousel-caption d-none d-md-block">
-      <h5>VIEW ACCESSORIES</h5>
-      <button type="button" class="btn btn-light">SHOP NOW</button>
+      <h5>ACCESSORIES</h5>
+      <a href="/showproduct/5"><button type="button" class="btn btn-outline-light btn-lg">SHOP NOW</button></a>
       </div>
     </div>
   </div>

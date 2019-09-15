@@ -86,8 +86,11 @@ class CartController extends Controller
         if(!$cart) {
             $cart = [ 
                 $id .'|'. $request->productSize => [
+                    "product_id" =>$product->id,
                     "name" => $product->productName,
                     "price" => $product->productPrice,
+                    // "productSizeID" => $request->productSizeId,
+
                     "size" => $request->productSize,
                     "quantity" => $request->productQuantity,
                     "photo" => $product->productImage
@@ -109,13 +112,17 @@ class CartController extends Controller
 
 
         $cart[$id .'|'. $request->productSize] = [
+            "product_id" =>$product->id,
+
                     "name" => $product->productName,
                     "price" => $product->productPrice,
+                    // "productSizeID" => $request->productSizeId,
+
                     "size" => $request->productSize,
                     "quantity" => $request->productQuantity,
                     "photo" => $product->productImage
         ];
- 
+
         session()->put('cart', $cart);
  
         return redirect()->back()->with('success', 'Product added to cart successfull!');

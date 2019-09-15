@@ -15,10 +15,9 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id');            
             $table->timestamps();
-        });
-        Schema::table('orders',function ($table){
+
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -30,7 +29,8 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::dropForeign(['user_id']);
+        Schema::dropForeign('user_id');
+
         Schema::dropIfExists('orders');
     }
 }

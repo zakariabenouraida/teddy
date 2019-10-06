@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
-use App\ProdCate;
-use App\Product;
-use App\Size;
-use Illuminate\Support\Facades\DB;
 
-class ShowProductController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +14,9 @@ class ShowProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        // $prodcates = ProdCate::all();
-        return view('showproduct.index', compact('products')
-        // , compact('prodcates')
-    );
+        $users = User::with('roles')->get();
+
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -51,26 +46,11 @@ class ShowProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id,$productCategory_id)
+    public function show($id)
     {
-        $product = Product::findOrFail($id);
-        $sizes = Size::all();
-        $suggestions = DB::table('products')->select('*')->where('productCategory_id',$productCategory_id)->get();
-        
-// dd($suggestions);
-        // $prodcate = ProdCate::findOrFail($id);
-        return view('showproduct.show')->with([
-                                        'product'       => $product,
-                                        'sizes'         => $sizes,
-                                        'suggestions'   => $suggestions
-                                    ]);
+        //
     }
-public function showcategory($id)
-{
-    $category = ProdCate::findOrFail($id);
-    $product = Product::table('products')->select('*')->where('productCategory_id',$category)->get();
-    return view('showproduct.category', compact('category'), compact('product'));
-}
+
     /**
      * Show the form for editing the specified resource.
      *

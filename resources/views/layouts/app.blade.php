@@ -11,7 +11,11 @@
 
     <!-- Scripts -->
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script     src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+   
+    <script src="{{ asset('js/main.js') }}"></script>
     <script src="https://kit.fontawesome.com/b3bd1b8484.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -25,7 +29,87 @@
     <!-- Styles -->
     
     <style>
+        .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+        .fadein{
+            margin-top: 25px;
+    font-size: 21px;
+    text-align: center;
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /* Firefox */
+    -webkit-animation: fadein 2s; /* Safari and Chrome */
+    -o-animation: fadein 2s; /* Opera */
+        }
+        @keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
         .topnav {
+            margin-top:-40px;
   background-color: #F1EDE7;
   overflow: hidden;
   text-align: center;
@@ -88,6 +172,27 @@ body {
    bottom:0;
    width:100%;
    height:60px;   
+}
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+html{
+    scroll-behavior: smooth;
+}
+#myBtn:hover {
+  background-color: #555;
 }</style>
     <style>
 @import url('https://fonts.googleapis.com/css?family=Fascinate&display=swap');
@@ -99,6 +204,13 @@ body {
 <div id="containera">
 
 <body style="padding-top:50px;">
+<!-- <div class="preloader">
+    <div class="preloader-spinner">
+      <div class="loader-content">
+        <img src="https://media0.giphy.com/media/10pPSOEe55e8Sc/200w.webp?cid=790b7611f4e321a1ffb61150de33ba5b43fe3f424d7fc722&rid=200w.webp" alt="JSOFT">
+      </div>
+    </div>
+  </div> -->
 <div id="header"></div>
     <div id="app" >
         <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white shadow-sm" >
@@ -121,15 +233,18 @@ body {
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                        @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                        @endif
                         @else
+                        @if(Auth::user()->hasRole('admin'))
+                        <a class="btn btn-primary btn-lg" href="/admin">Admin Dashboard</a>
+                        @endif
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -161,20 +276,23 @@ body {
             </div>
         </nav>
 </div>
+
         <main class="py-4 ">
             @yield('content')
+            <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
         </main>
     </div>
-    <div id="footer"></div>
+    <div id="footer" ></div>
     <footer>
-        <div class="container-fluid ">
-        <div class="row mt-3 mb-3 d-flex justify-content-center ">
-            <div class="col-2"id="brandpos">
+        <div class="container-fluid"style="width:100%">
+        <div class="row mt-3 mb-3 d-flex justify-content-center" style="text-align:center;">
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"id="brandpos">
                 <a class="navbar-brand"  href="{{ url('/') }}" style="margin-left:10px;text-align:center;">
                     {{ config('app.name', 'ShopSmart') }}
                 </a>
             </div>
-            <div class="col-2">
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                 <h5>MENU</h5>
                 <ul >
                 <li ><a style="text-decoration:none;color:black;" href="/showcategory/1">Hoodies</a></li>
@@ -184,21 +302,21 @@ body {
                 <li ><a style="text-decoration:none;color:black;" href="/showcategory/5">Accessories</a></li>
                 </ul>
             </div>
-            <div class="col-2"> 
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"> 
                 <h5>YOUR ACCOUNT</h5>  
                 <ul>
                     <li><a style="text-decoration:none;color:black;" href="{{ route('shippingdetails.create')}}">Shipping Details</a></li>
                     <!-- <li>BILLING</li> -->
                 </ul>
             </div> 
-            <div class="col-2"> 
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2"> 
                 <h5>HELP</h5>  
                 <ul>
                     <li>FAQ & SHIPPING/RETURNS</li>
                     <li>PRIVACY POLICY</li>
                 </ul>
             </div> 
-            <div class="col-2">
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
             <h5>NEWSLETTER</h5>
                 <form >
                     <input type="mail" class="form-control">
@@ -206,7 +324,7 @@ body {
                 </form>
 
             </div> 
-            <div class="col-1  offset-1">
+            <div class="col-xs-11 col-sm-12 col-md-2 col-lg-2  mt-2">
             <h5>FIND US</h5>
                 <ul id="social">
                     <li><i class="fab fa-twitter fa-2x"></i></li>
@@ -224,6 +342,29 @@ body {
     </footer>
 </div>
 @yield('scripts')
+<script>
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+
 <script src="{{ asset('js/app.js') }}"></script>
 
 </body>

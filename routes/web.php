@@ -49,6 +49,8 @@ Route::group(['middleware' => ['admin']],function(){
         Route::resource('products','ProductController');   
         Route::resource('prod_cates','ProdCateController');
         Route::resource('sizes', 'SizeController');
+        Route::resource('users', 'UserController');
+
 
         Route::get('/',function(){
             return view('admin.index');

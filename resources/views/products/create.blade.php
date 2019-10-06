@@ -5,10 +5,13 @@
     margin-top: 40px;
   }
 </style>
+<div class="container-fluid" style="text-align:center;">
     <button  type="button" class="btn btn-primary btn-lg uper"><a href="/" style="text-decoration:none;color:white;">Home</a></button>
     <button  type="button" class="btn btn-primary btn-lg uper"><a href="/admin/" style="text-decoration:none;color:white;">Admin Dashboard</a></button>
     <button  class="btn btn-primary btn-lg uper" ><a href="/admin/products" style="text-decoration:none;color:white;">See all Products</a></button>
-<div class="card uper">
+</div>
+<div class="container-fluid">
+    <div class="card uper">
   <div class="card-header">
     Add product
   </div>
@@ -53,5 +56,6 @@
           <button type="submit" class="btn btn-primary">Create Product</button>
       </form>
   </div>
+</div>
 </div>
 @endsection

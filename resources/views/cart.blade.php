@@ -3,12 +3,11 @@
 @section('title', 'Cart')
  
 @section('content')
-<div class="container-fluid">
-<!-- <div class="row justify-content-md-center">
-<div class="col-md-2"> -->
-  
-</div>
-<div class="col-md-10 offset-1">
+<!-- <div class="container-fluid">
+<div <div class="row justify-content-md-center">
+<div class="col-md-2">
+</div> -->
+<div class="col-12">
     <table id="cart" class="table table-hover table-condensed">
         <thead>
         <tr>
@@ -77,8 +76,8 @@
 </div>
 <!-- <div class="col-md-2">
         </div> -->
-</div>
-</div>
+<!-- </div>
+</div> -->
 @endsection
 
 @section('scripts')

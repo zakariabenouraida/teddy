@@ -1,14 +1,14 @@
 @extends('layouts.app')
-<div class="topnav">
-  <a href="/showcategory/1">Hoodies</a>
-  <a href="/showcategory/2">Sweaters</a>
-  <a href="/showcategory/3">SHIRTS</a>
-  <a href="/showcategory/4">Pants</a>
-  <a href="/showcategory/5">Accessories</a>
-</div>
 @section('content')
+    <div class="topnav">
+      <a href="/showcategory/1">Hoodies</a>
+      <a href="/showcategory/2">Sweaters</a>
+      <a href="/showcategory/3">SHIRTS</a>
+      <a href="/showcategory/4">Pants</a>
+      <a href="/showcategory/5">Accessories</a>
+    </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid mt-5">
 	<div class="row">
     <div class="col-md-1">
 </div>

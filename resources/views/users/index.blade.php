@@ -22,18 +22,25 @@
         <tr>
           <td>ID</td>
           <td>size Name</td>
+          <td>role</td>
+          <td>size Name</td>
           <td colspan="2">Action</td>
         </tr>
     </thead>
     <tbody>
-        @foreach($sizes as $size)
+        @foreach($users as $user)
         <tr>
-            <td>{{$size->id}}</td>
-            <td>{{$size->size}}</td>
-
-            <td><a href="{{ route('sizes.edit',$size->id)}}" class="btn btn-primary">Edit</a></td>
+            <td>{{$user->id}}</td>
+            <td>{{$user->name}}</td>
             <td>
-                <form action="{{ route('sizes.destroy', $size->id)}}" method="post">
+                @foreach($user->roles as $role)
+                {{$role->name}}
+                @endforeach
+            </td>
+
+            <td><a href="{{ route('users.edit',$user->id)}}" class="btn btn-primary">Edit</a></td>
+            <td>
+                <form action="{{ route('users.destroy', $user->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Delete</button>

@@ -18,12 +18,11 @@ class SiteController extends Controller
     public function index($productCategory_id)
     {
 
-            $products = DB::table('products')->select('*')->where('productCategory_id',$productCategory_id)->get();
-            
-    // dd($suggestions);
-            // $prodcate = ProdCate::findOrFail($id);
-            return view('showproduct.category',compact('products'));
-        
+        $products = DB::table('products')->select('*')->where('productCategory_id', $productCategory_id)->paginate(16);
+
+        // dd($suggestions);
+        // $prodcate = ProdCate::findOrFail($id);
+        return view('showproduct.category', compact('products'));
     }
 
     /**
@@ -59,7 +58,7 @@ class SiteController extends Controller
         $sizes = Size::all();
 
         // $prodcate = ProdCate::findOrFail($id);
-        return view('site.show', compact('product'),compact('sizes'));
+        return view('site.show', compact('product'), compact('sizes'));
     }
 
     /**

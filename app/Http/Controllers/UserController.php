@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\Role;
 
 class UserController extends Controller
 {
@@ -18,7 +19,21 @@ class UserController extends Controller
 
         return view('users.index', compact('users'));
     }
+    public function giveAdmin($userId)
+    {
+        $user = User::where('id', $userId)->firstOrFail();
+        $adminRole = Role::where('name', 'admin')->firstOrFail();
+        $user->roles()->attach($adminRole->id);
+        return redirect('/admin/users');
+    }
 
+    public function removeAdmin($userId)
+    {
+        $user = User::where('id', $userId)->firstOrFail();
+        $adminRole = Role::where('name', 'admin')->firstOrFail();
+        $user->roles()->detach($adminRole->id);
+        return redirect('/admin/users');
+    }
     /**
      * Show the form for creating a new resource.
      *

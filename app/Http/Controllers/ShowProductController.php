@@ -17,11 +17,13 @@ class ShowProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(16);
         // $prodcates = ProdCate::all();
-        return view('showproduct.index', compact('products')
-        // , compact('prodcates')
-    );
+        return view(
+            'showproduct.index',
+            compact('products')
+            // , compact('prodcates')
+        );
     }
 
     /**
@@ -51,26 +53,26 @@ class ShowProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id,$productCategory_id)
+    public function show($id, $productCategory_id)
     {
         $product = Product::findOrFail($id);
         $sizes = Size::all();
-        $suggestions = DB::table('products')->select('*')->where('productCategory_id',$productCategory_id)->get();
-        
-// dd($suggestions);
+        $suggestions = DB::table('products')->select('*')->where('productCategory_id', $productCategory_id)->get();
+
+        // dd($suggestions);
         // $prodcate = ProdCate::findOrFail($id);
         return view('showproduct.show')->with([
-                                        'product'       => $product,
-                                        'sizes'         => $sizes,
-                                        'suggestions'   => $suggestions
-                                    ]);
+            'product'       => $product,
+            'sizes'         => $sizes,
+            'suggestions'   => $suggestions
+        ]);
     }
-public function showcategory($id)
-{
-    $category = ProdCate::findOrFail($id);
-    $product = Product::table('products')->select('*')->where('productCategory_id',$category)->get();
-    return view('showproduct.category', compact('category'), compact('product'));
-}
+    public function showcategory($id)
+    {
+        $category = ProdCate::findOrFail($id);
+        $product = Product::table('products')->select('*')->where('productCategory_id', $category)->get();
+        return view('showproduct.category', compact('category'), compact('product'));
+    }
     /**
      * Show the form for editing the specified resource.
      *

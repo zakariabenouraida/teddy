@@ -36,12 +36,12 @@ Route::get('/showcategory/{productCategory_id}', 'SiteController@index');
 Route::resource('userdetails', 'RegisterController');
 
 // Route::get('/showproduct/{productCategory_id}', 'ShowProductController@showcategory');
-// Route::resource('checkout','OrderController@thanks');
 // Route::resource('orders','OrderController');
 // Route::get('/orders/create', 'OrderController@create');
 // route::post('/orders/store', 'OrderController@store');
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('orders', 'OrderController');
+    // Route::resource('orders', 'OrderController');
+    Route::resource('checkout', 'CheckoutController');
     Route::resource('shippingdetails', 'shippingDetailController');
 });
 Route::group(['middleware' => ['admin']], function () {

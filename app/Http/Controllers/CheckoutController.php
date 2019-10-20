@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\LineOrder;
 use App\NewOrder;
 use App\Order;
-use Illuminate\Http\Request;
 use App\shippingDetail;
-use App\User;
+use Cartalyst\Stripe\Exception\CardErrorException;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use Cartalyst\Stripe\Stripe as CartalystStripe;
+use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Session;
 
-class OrderController extends Controller
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +22,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        // $neworders = NewOrder::all();
-        // return view('showproduct');
+        $userId = Auth::id();
+        // dd($userId);
+        $shippingdetails = shippingDetail::where('user_id', $userId)->get();
+
+        // $s =  $shippingdetails ->shippingAddress;
+        //  dd($shippingdetails);
+        return view('checkout.index', compact('shippingdetails'));
     }
 
     /**
@@ -31,13 +38,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $userId = Auth::id();
-        // dd($userId);
-        $shippingdetails = shippingDetail::where('user_id', $userId)->get();
-
-        // $s =  $shippingdetails ->shippingAddress;
-        //  dd($shippingdetails);
-        return view('orders.create', compact('shippingdetails'));
+        //
     }
 
     /**
@@ -48,9 +49,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        if ($request->session()->has('cart')) {
 
+
+        // dd($request->all());
+        if ($request->session()->has('cart')) {
             $validatedData = $request->validate([
                 'user_id' => 'required',
             ]);
@@ -58,8 +60,6 @@ class OrderController extends Controller
             $order = new Order($validatedData);
             $order->save();
         }
-        // dd($order);
-
 
         $producttable = [];
         // $validatedOrder = new NewOrder;
@@ -76,24 +76,28 @@ class OrderController extends Controller
             $neworder->save($producttable);
             // dd($neworder);
         }
-        Session::forget('cart');
-        return view('orders.thanks')->with('success', 'Order successfully saved');
 
-        // $validatedOrder ->order_id = $order->id;
-        // $validatedOrder ->product_id = $details['product_id'];
-        // $validatedOrder ->productSize = $details['size'];
-        // $validatedOrder ->productQuantity = $details['quantity'];
+        $orderid = $order->id;
+        $customer = Auth::user()->id;
+        try {
+            $charge = Stripe::charges()->create([
+                'amount' => $request->total,
+                'currency' => 'USD',
+                'source' => $request->stripeToken,
+                'description' => 'Order',
+                'receipt_email' => $request->email,
+                'metadata' => [
+                    // 'customer_id' => Auth::id(),
+                    'order_id' => $orderid,
+                    'user_id' => $customer,
+                ],
+            ]);
+            Session::forget('cart');
 
-        // array_push($producttable,$details);
-        // dd(count($producttable));
-        // for($i=0;$i <= count($producttable);$i++){
-
-
-        // }
-        // dd($producttable);
-        // dd($validatedOrder);
-
-
+            return view('orders.thanks')->with('success', 'Order successfully saved');
+        } catch (CardErrorException $e) {
+            return back()->withErrors('Error! ' . $e->getMessage());
+        }
     }
 
     /**

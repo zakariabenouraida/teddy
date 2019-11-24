@@ -74,11 +74,12 @@ class CheckoutController extends Controller
             array_push($producttable, $details);
 
             $neworder->save($producttable);
-            // dd($neworder);
+            // dd($details);
         }
 
         $orderid = $order->id;
         $customer = Auth::user()->id;
+        $customername = Auth::user()->name;
         try {
             $charge = Stripe::charges()->create([
                 'amount' => $request->total,
@@ -90,6 +91,7 @@ class CheckoutController extends Controller
                     // 'customer_id' => Auth::id(),
                     'order_id' => $orderid,
                     'user_id' => $customer,
+                    'user_name' => $customername,
                 ],
             ]);
             Session::forget('cart');

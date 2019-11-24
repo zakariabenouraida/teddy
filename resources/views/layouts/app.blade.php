@@ -376,7 +376,7 @@
     </div>
 </footer>
 </div>
-@yield('scripts')
+@yield('cartscripts')
 <script>
     //Get the button
     var mybutton = document.getElementById("myBtn");
